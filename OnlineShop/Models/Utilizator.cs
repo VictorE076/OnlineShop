@@ -7,7 +7,7 @@ namespace OnlineShop.Models
     {
         private readonly string[] _TipUtilPermis = { "Utilizator", "Colaborator", "Administrator" };
 
-        public override bool IsValid(object value)
+        public override bool IsValid(object? value)
         {
             if (value is string tip)
             {
