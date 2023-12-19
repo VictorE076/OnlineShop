@@ -9,6 +9,6 @@ namespace OnlineShop.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Denumirea categoriei este obligatorie")]
-        public string? Denumire { get; set; }
+        public string Denumire { get; set; }
     }
 }
