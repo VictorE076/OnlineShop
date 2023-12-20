@@ -1,94 +1,85 @@
-﻿//using Microsoft.AspNetCore.Authorization;
-//using Microsoft.AspNetCore.Mvc;
-//using OnlineShop.Models;
-////using OnlineShop.Data;
-//using System.Data;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using OnlineShop.Models;
+using OnlineShop.Data;
+using System.Data;
 
-//namespace OnlineShop.Controllers
-//{
-//    public class CategoriiController : Controller
-//    {
-//        private readonly ApplicationDbContext db;
+namespace OnlineShop.Controllers
+{
+	public class CategoriiController : Controller
+	{
+		private readonly ApplicationDbContext db;
 
-//        public CategoriesController(ApplicationDbContext context)
-//        {
-//            db = context;
-//        }
+		public CategoriiController(ApplicationDbContext context)
+		{
+			db = context;
+		}
 
-//        public ActionResult Index()
-//        {
-//            if (TempData.ContainsKey("message"))
-//                ViewBag.message = TempData["message"].ToString();
+		public ActionResult Index()
+		{
+			if (TempData.ContainsKey("message"))
+				ViewBag.message = TempData["message"].ToString();
 
-//            var categories = from category in db.Categories
-//                             orderby category.CategoryName
-//                             select category;
+			var categorii = from categorie in db.Categorii
+							orderby categorie.Denumire
+							select categorie;
 
-//            ViewBag.Categories = categories;
-//            return View();
-//        }
+			ViewBag.Categorii = categorii;
+			return View();
+		}
 
-//        public ActionResult Show(int id)
-//        {
-//            Category category = db.Categories.Find(id);
-//            return View(category);
-//        }
+		public ActionResult Show(int id)
+		{
+			Categorie categorie = db.Categorii.Find(id);
+			return View(categorie);
+		}
 
-//        public ActionResult New()
-//        {
-//            return View();
-//        }
+		public ActionResult New()
+		{
+			return View();
+		}
 
-//        [HttpPost]
-//        public ActionResult New(Category cat)
-//        {
-//            if (ModelState.IsValid)
-//            {
-//                db.Categories.Add(cat);
-//                db.SaveChanges();
-//                TempData["message"] = "Categoria a fost adaugata";
-//                return RedirectToAction("Index");
-//            }
+		[HttpPost]
+		public ActionResult New(Categorie categ)
+		{
+			if (ModelState.IsValid)
+			{
+				db.Categorii.Add(categ);
+				db.SaveChanges();
+				TempData["message"] = "Categoria a fost adaugata";
+				return RedirectToAction("Index");
+			}
+			return View(categ);
+		}
 
-//            else
-//            {
-//                return View(cat);
-//            }
-//        }
+		public ActionResult Edit(int id)
+		{
+            Categorie categorie = db.Categorii.Find(id);
+			return View(categorie);
+		}
 
-//        public ActionResult Edit(int id)
-//        {
-//            Category category = db.Categories.Find(id);
-//            return View(category);
-//        }
+		[HttpPost]
+		public ActionResult Edit(int id, Categorie reqCateg)
+		{
+            Categorie categorie = db.Categorii.Find(id);
+			if (ModelState.IsValid)
+			{
+                categorie.Denumire = reqCateg.Denumire;
+				db.SaveChanges();
+				TempData["message"] = "Categoria a fost modificata!";
+				return RedirectToAction("Index");
+			}
+			return View(reqCateg);
+		}
 
-//        [HttpPost]
-//        public ActionResult Edit(int id, Category requestCategory)
-//        {
-//            Category category = db.Categories.Find(id);
-
-//            if (ModelState.IsValid)
-//            {
-
-//                category.CategoryName = requestCategory.CategoryName;
-//                db.SaveChanges();
-//                TempData["message"] = "Categoria a fost modificata!";
-//                return RedirectToAction("Index");
-//            }
-//            else
-//            {
-//                return View(requestCategory);
-//            }
-//        }
-
-//        [HttpPost]
-//        public ActionResult Delete(int id)
-//        {
-//            Category category = db.Categories.Find(id);
-//            db.Categories.Remove(category);
-//            TempData["message"] = "Categoria a fost stearsa";
-//            db.SaveChanges();
-//            return RedirectToAction("Index");
-//        }
-//    }
-//}
+		[HttpPost]
+		public ActionResult Delete(int id)
+		{
+            Categorie categorie = db.Categorii.Find(id);
+			db.Categorii.Remove(categorie);
+			TempData["message"] = "Categoria a fost stearsa";
+			db.SaveChanges();
+			return RedirectToAction("Index");
+		}
+	}
+}

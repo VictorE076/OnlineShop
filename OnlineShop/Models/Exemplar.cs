@@ -17,14 +17,12 @@ namespace OnlineShop.Models
 
     public class Exemplar
 	{
-		[Key, Column(Order = 0)]
 		public int Id_Produs { get; set; }
 
-        [Key, Column(Order = 1)]
         public int Numar_Produs { get; set; }
 
         [Required(ErrorMessage = "Starea exemplarului este obligatorie")]
-        [StareEx(ErrorMessage = "Starea introdusa nu este permisa")]
+        [StareEx(ErrorMessage = "Stare invalida")]
 		public string Stare { get; set; }
 
 		public int? Id_Comanda { get; set; }
