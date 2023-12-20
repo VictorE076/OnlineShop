@@ -25,7 +25,7 @@ namespace OnlineShop.Models
 
         [Required(ErrorMessage = "Starea exemplarului este obligatorie")]
         [StareEx(ErrorMessage = "Starea introdusa nu este permisa")]
-		public string Stare { get; set; }
+		public string? Stare { get; set; }
 
 		public int? Id_Comanda { get; set; }
 

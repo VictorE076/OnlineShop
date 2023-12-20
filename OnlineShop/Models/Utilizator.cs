@@ -5,6 +5,7 @@ namespace OnlineShop.Models
 {
     public class TipUtilPermisAttribute : ValidationAttribute
     {
+        /*
         private readonly string[] _TipUtilPermis = { "Utilizator", "Colaborator", "Administrator" };
 
         public override bool IsValid(object? value)
@@ -15,6 +16,7 @@ namespace OnlineShop.Models
             }
             return false;
         }
+        */
     }
 
     public class Utilizator
