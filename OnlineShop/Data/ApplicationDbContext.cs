@@ -10,6 +10,7 @@ namespace OnlineShop.Data
 		{
 		}
 
+		// For Composite Primary Keys
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
