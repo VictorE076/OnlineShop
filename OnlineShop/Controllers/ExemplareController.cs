@@ -25,7 +25,7 @@ namespace OnlineShop.Controllers
                             orderby produs.Titlu
                             select exemplar;
 
-            ViewBag.Produse = exemplare;
+            ViewBag.Exemplare = exemplare;
             return View();
         }
 

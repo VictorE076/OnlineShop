@@ -21,16 +21,13 @@
 @foreach (var utilizator in ViewBag.Utilizatori)
 {
     @Html.Label("Tip", "Tip utilizator")
-    <p>@utilizator.Titlu</p>
+    <p>@utilizator.Tip</p>
 
     @Html.Label("Nume", "Nume utilizator")
     <p>@utilizator.Nume</p>
 
     @Html.Label("Prenume", "Prenume utilizator")
     <p>@utilizator.Prenume</p>
-
-    @Html.Label("Nume", "Nume utilizator")
-    <p>@utilizator.Nume</p>
 
     @Html.Label("Email", "Email utilizator")
     <p>@utilizator.Email</p>
