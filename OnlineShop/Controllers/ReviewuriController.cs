@@ -21,7 +21,7 @@ namespace OnlineShop.Controllers
             var reviewuri = from review in db.Reviewuri
                             join utilizator in db.Utilizatori on review.UtilizatorId equals utilizator.Id
                             join produs in db.Produse on review.ProdusId equals produs.Id
-                            orderby produs.Rating descending, produs.Titlu
+                            orderby produs.Titlu, produs.Rating descending
                             select review;
 
             ViewBag.Reviewuri = reviewuri;
